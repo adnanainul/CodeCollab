@@ -1,0 +1,305 @@
+/* ------------------------- */
+/* JOIN ROOM SCREEN          */
+/* ------------------------- */
+
+.join-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0e0e0e;
+}
+
+.join-box {
+  background: #1b1b1b;
+  padding: 40px;
+  width: 350px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0px 0px 20px #00000070;
+}
+
+.join-title {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.join-input {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: #2a2a2a;
+  color: white;
+  font-size: 14px;
+}
+
+.join-input::placeholder {
+  color: #bbb;
+}
+
+.join-btn-full {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background: #4e8cff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.join-btn-full:hover {
+  background: #3a6fd6;
+}
+
+/* ------------------------- */
+/* MAIN EDITOR LAYOUT        */
+/* ------------------------- */
+
+.main-layout {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
+.main-layout.dark {
+  background: #1e1e1e;
+  color: white;
+}
+
+.main-layout.light {
+  background: #f6f6f6;
+  color: #000;
+}
+
+/* ------------------------- */
+/* SIDEBAR                   */
+/* ------------------------- */
+
+.sidebar {
+  width: 260px;
+  background: #1a1a1a;
+  color: white;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  border-right: 1px solid #333;
+}
+
+.sidebar h3 {
+  margin: 0 0 10px 0;
+  font-size: 15px;
+}
+
+/* ------------------------- */
+/* USER LIST                 */
+/* ------------------------- */
+
+.user-list-item {
+  display: flex;
+  align-items: center;
+  background: #2c2c2c;
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  gap: 12px;
+}
+
+.user-list-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* ------------------------- */
+/* CHAT                      */
+/* ------------------------- */
+
+.chat-box {
+  height: 40vh;
+  background: #111;
+  border-radius: 8px;
+  padding: 10px;
+  overflow-y: auto;
+  border: 1px solid #333;
+}
+
+.chat-message {
+  background: #222;
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  color: #ddd;
+}
+
+.chat-input {
+  display: flex;
+  gap: 8px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #2b2b2b;
+  color: white;
+}
+
+.chat-input button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #4e8cff;
+  color: white;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  background: #3c74d9;
+}
+
+.chat-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+/* ------------------------- */
+/* EDITOR SECTION            */
+/* ------------------------- */
+
+.editor-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar {
+  padding: 14px;
+  background: #111;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #333;
+}
+
+.top-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.top-username {
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.language-select {
+  padding: 6px;
+  border-radius: 6px;
+  background: #2e2e2e;
+  color: white;
+  border: none;
+}
+
+.mode-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: #4e8cff;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.mode-btn:hover {
+  background: #3a6fd6;
+}
+
+.run-btn {
+  padding: 8px 14px;
+  background: #27c93f;
+  color: black;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.run-btn:hover {
+  opacity: 0.85;
+}
+
+/* LOGOUT BUTTON */
+.logout-btn {
+  padding: 8px 14px;
+  background: #ff5555;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  opacity: 0.85;
+}
+
+/* ------------------------- */
+/* EDITOR PANEL              */
+/* ------------------------- */
+
+.editor-wrapper {
+  flex: 1;
+  height: calc(100vh - 160px);
+  background: #1e1e1e;
+  overflow: hidden;
+}
+
+/* ------------------------- */
+/* OUTPUT PANEL              */
+/* ------------------------- */
+
+.output-panel {
+  height: 140px;
+  background: #111;
+  color: #00ff66;
+  padding: 10px;
+  font-size: 14px;
+  overflow-y: auto;
+  border-top: 1px solid #333;
+}
+
+/* ------------------------- */
+/* REMOTE CURSOR             */
+/* ------------------------- */
+
+.remoteCursor {
+  border-left: 2px solid yellow !important;
+}
+
+/* ------------------------- */
+/* SCROLLBAR                 */
+/* ------------------------- */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
