@@ -1,21 +1,9 @@
-# Node modules
-node_modules/
-client/node_modules/
-server/node_modules/
-
-# Logs
-logs
-*.log
-
-# Build output
-dist/
-build/
-
-# Environment files
+# Add this to .gitignore if not already present
 .env
-server/.env
-client/.env
-
-# OS files
+.env.production
+.env.development
+node_modules/
+build/
+dist/
 .DS_Store
-Thumbs.db
+*.log

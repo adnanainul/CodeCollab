@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://CodeCollab.onrender.com"
+    process.env.CLIENT_URL || "https://your-app.vercel.app"
   ],
   credentials: true,
 }));
@@ -41,7 +41,7 @@ const io = new Server(server, {
   cors: {
     origin: [
       "http://localhost:3000",
-      "https://CodeCollab.onrender.com"
+      process.env.CLIENT_URL || "https://your-app.vercel.app"
     ],
     methods: ["GET", "POST"],
   },
