@@ -1,87 +1,266 @@
-/* ------------------------------- */
-/* LANDING PAGE                    */
-/* ------------------------------- */
+/* ============================================= */
+/*  LANDING PAGE - PROFESSIONAL DESIGN          */
+/* ============================================= */
 
 .landing-container {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  background: linear-gradient(135deg, #0d0d0d, #1e1e1e);
-  color: white;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+  color: var(--text-primary);
   text-align: center;
-  padding: 20px;
+  padding: var(--space-8);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background effects */
+.landing-container::before {
+  content: '';
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, var(--color-primary-600) 0%, transparent 70%);
+  opacity: 0.1;
+  top: -400px;
+  right: -400px;
+  animation: float 10s ease-in-out infinite;
+}
+
+.landing-container::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--color-accent-500) 0%, transparent 70%);
+  opacity: 0.08;
+  bottom: -300px;
+  left: -300px;
+  animation: float 12s ease-in-out infinite reverse;
+}
+
+/* Decorative floating elements */
+.landing-container>* {
+  position: relative;
+  z-index: var(--z-base);
 }
 
 .landing-title {
-  font-size: 54px;
-  font-weight: 800;
-  margin-bottom: 12px;
-  letter-spacing: 1px;
-  background: linear-gradient(90deg, #4e8cff, #9d4dff);
-  background-clip: text;
-  -webkit-background-clip: text;
+  font-size: clamp(var(--text-4xl), 8vw, var(--text-6xl));
+  font-weight: var(--font-extrabold);
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
+  line-height: var(--leading-tight);
 
-  color: transparent;
+  background: linear-gradient(135deg,
+      var(--color-primary-300) 0%,
+      var(--color-primary-400) 30%,
+      var(--color-accent-400) 70%,
+      var(--color-accent-300) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 
+  animation: fadeIn 0.8s ease-out, shimmer 8s ease-in-out infinite;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+}
+
+@keyframes shimmer {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .landing-subtitle {
-  font-size: 18px;
-  max-width: 650px;
-  opacity: 0.8;
-  margin-bottom: 35px;
-  line-height: 1.6;
+  font-size: clamp(var(--text-base), 2.5vw, var(--text-xl));
+  max-width: 700px;
+  color: var(--text-secondary);
+  margin: 0 auto var(--space-10);
+  line-height: var(--leading-relaxed);
+  font-weight: var(--font-normal);
+  animation: fadeIn 1s ease-out 0.2s backwards;
 }
 
 /* Buttons Container */
 .landing-buttons {
   display: flex;
-  gap: 18px;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeIn 1.2s ease-out 0.4s backwards;
 }
 
-/* Base button styling */
+/* Base button styling with glassmorphism */
 .landing-btn {
-  padding: 14px 26px;
-  border-radius: 8px;
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-xl);
   text-decoration: none;
-  font-size: 16px;
-  font-weight: bold;
-
-  transition: 0.25s ease;
-  box-shadow: 0px 0px 10px #00000055;
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
 }
 
-/* Login */
+.landing-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width var(--transition-slow), height var(--transition-slow);
+}
+
+.landing-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Login Button - Secondary Style */
 .login-btn {
-  background: #2e2e2e;
-  color: white;
-  border: 1px solid #444;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-lg);
 }
 
 .login-btn:hover {
-  background: #3b3b3b;
+  background: var(--color-neutral-800);
+  border-color: var(--color-primary-500);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-xl), 0 0 20px rgba(124, 58, 237, 0.2);
 }
 
-/* Register */
+/* Register Button - Primary Style */
 .register-btn {
-  background: #0066ff;
-  color: white;
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-500));
+  color: var(--text-primary);
+  border: 1px solid transparent;
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
 }
 
 .register-btn:hover {
-  background: #0050d4;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(124, 58, 237, 0.5), var(--shadow-glow);
 }
 
-/* Start Coding */
+.register-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Start Coding Button - Accent Style */
 .start-btn {
-  background: #28a745;
-  color: white;
+  background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-400));
+  color: var(--color-neutral-900);
+  border: 1px solid transparent;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+  font-weight: var(--font-bold);
 }
 
 .start-btn:hover {
-  background: #1f8a38;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(16, 185, 129, 0.5), var(--shadow-accent);
+}
+
+.start-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Features Section (Optional) */
+.landing-features {
+  margin-top: var(--space-16);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-6);
+  max-width: 1000px;
+  width: 100%;
+  animation: fadeIn 1.4s ease-out 0.6s backwards;
+}
+
+.feature-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  transition: all var(--transition-base);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-primary-500);
+  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.2);
+}
+
+.feature-icon {
+  font-size: var(--text-4xl);
+  margin-bottom: var(--space-3);
+}
+
+.feature-title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--space-2);
+  color: var(--text-primary);
+}
+
+.feature-description {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .landing-container {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .landing-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .landing-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .landing-features {
+    margin-top: var(--space-12);
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-title {
+    font-size: var(--text-3xl);
+  }
+
+  .landing-subtitle {
+    font-size: var(--text-base);
+  }
+
+  .landing-btn {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-base);
+  }
 }

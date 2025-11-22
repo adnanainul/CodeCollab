@@ -10,12 +10,14 @@ const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 app.use(express.json());
-app.use(
-  cors({
-    origin: ["http://localhost:3000"],
-    methods: ["GET", "POST"],
-  })
-);
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://CodeCollab.onrender.com"
+  ],
+  credentials: true,
+}));
+
 
 app.use("/auth", authRoutes);
 
@@ -35,7 +37,16 @@ const CodeModel = mongoose.model("Code", CodeSchema);
 
 // -------------------- SOCKET SERVER --------------------
 const server = http.createServer(app);
-const io = new Server(server, { cors: { origin: ["http://localhost:3000"] } });
+const io = new Server(server, {
+  cors: {
+    origin: [
+      "http://localhost:3000",
+      "https://CodeCollab.onrender.com"
+    ],
+    methods: ["GET", "POST"],
+  },
+});
+
 
 const rooms = {}; // { roomId: [ { id, username, avatar } ] }
 

@@ -6,12 +6,21 @@ import "./Auth.css";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
+
     if (!email || !pass) {
-      return alert("Please fill all fields");
+      setError("Please fill all fields");
+      return;
     }
+
+    setLoading(true);
 
     try {
       const res = await axios.post("http://localhost:4000/auth/login", {
@@ -20,47 +29,71 @@ export default function Login() {
       });
 
       if (!res.data || !res.data.token) {
-        return alert("Invalid server response");
+        setError("Invalid server response");
+        setLoading(false);
+        return;
       }
 
       // Store token and user
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
-      alert("Login successful!");
+      // Navigate to editor
       navigate("/editor");
     } catch (err) {
-      alert(err.response?.data?.message || "Invalid email or password");
+      setError(err.response?.data?.message || "Invalid email or password");
+      setLoading(false);
     }
   };
 
   return (
     <div className="auth-container-dark">
       <div className="auth-box">
-        <h2>Login</h2>
+        <h2>Welcome Back</h2>
 
-        <input
-          className="auth-input"
-          type="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        {error && <div className="auth-error">{error}</div>}
 
-        <input
-          className="auth-input"
-          type="password"
-          placeholder="Enter password"
-          value={pass}
-          onChange={(e) => setPass(e.target.value)}
-        />
+        <form onSubmit={handleLogin}>
+          <input
+            className="auth-input"
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={loading}
+          />
 
-        <button className="auth-btn" onClick={handleLogin}>
-          Login
-        </button>
+          <div className="password-wrapper">
+            <input
+              className="auth-input"
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter password"
+              value={pass}
+              onChange={(e) => setPass(e.target.value)}
+              disabled={loading}
+              style={{ paddingRight: '45px' }}
+            />
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowPassword(!showPassword)}
+              tabIndex={-1}
+            >
+              {showPassword ? '👁️' : '👁️‍🗨️'}
+            </button>
+          </div>
+
+          <button
+            className={`auth-btn ${loading ? 'loading' : ''}`}
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? '' : 'Login'}
+          </button>
+        </form>
 
         <p className="auth-bottom-text">
-          Don’t have an account? <Link to="/register">Register</Link>
+          Don't have an account? <Link to="/register">Register</Link>
         </p>
       </div>
     </div>

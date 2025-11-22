@@ -4,28 +4,64 @@ import axios from "axios";
 import "./Auth.css";
 
 export default function Register() {
-  const [username, setUsername] = useState("");   // REQUIRED
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [passwordStrength, setPasswordStrength] = useState({ level: '', width: 0 });
   const navigate = useNavigate();
 
-  const handleRegister = async () => {
-    if (!username || !email || !pass) {
-      return alert("Please fill all fields");
+  const checkPasswordStrength = (password) => {
+    if (password.length < 6) {
+      setPasswordStrength({ level: 'weak', width: 33 });
+    } else if (password.length < 10) {
+      setPasswordStrength({ level: 'medium', width: 66 });
+    } else {
+      setPasswordStrength({ level: 'strong', width: 100 });
     }
+  };
+
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setPass(value);
+    if (value) {
+      checkPasswordStrength(value);
+    } else {
+      setPasswordStrength({ level: '', width: 0 });
+    }
+  };
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    if (!username || !email || !pass) {
+      setError("Please fill all fields");
+      return;
+    }
+
+    if (pass.length < 6) {
+      setError("Password must be at least 6 characters");
+      return;
+    }
+
+    setLoading(true);
 
     try {
       const res = await axios.post("http://localhost:4000/auth/register", {
-        username,              // 🔥 MUST BE SENT
+        username,
         email,
         password: pass,
       });
 
-      alert("Registration successful!");
+      // Navigate to login
       navigate("/login");
     } catch (err) {
       console.error(err);
-      alert(err.response?.data?.message || "Server error");
+      setError(err.response?.data?.message || "Server error");
+      setLoading(false);
     }
   };
 
@@ -34,32 +70,63 @@ export default function Register() {
       <div className="auth-box">
         <h2>Create Account</h2>
 
-        <input
-          className="auth-input"
-          placeholder="Enter username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        {error && <div className="auth-error">{error}</div>}
 
-        <input
-          className="auth-input"
-          type="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <form onSubmit={handleRegister}>
+          <input
+            className="auth-input"
+            placeholder="Enter username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            disabled={loading}
+          />
 
-        <input
-          className="auth-input"
-          type="password"
-          placeholder="Enter password"
-          value={pass}
-          onChange={(e) => setPass(e.target.value)}
-        />
+          <input
+            className="auth-input"
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={loading}
+          />
 
-        <button className="auth-btn" onClick={handleRegister}>
-          Register
-        </button>
+          <div className="password-wrapper">
+            <input
+              className="auth-input"
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter password (min 6 characters)"
+              value={pass}
+              onChange={handlePasswordChange}
+              disabled={loading}
+              style={{ paddingRight: '45px' }}
+            />
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowPassword(!showPassword)}
+              tabIndex={-1}
+            >
+              {showPassword ? '👁️' : '👁️‍🗨️'}
+            </button>
+          </div>
+
+          {passwordStrength.level && (
+            <div className="password-strength">
+              <div
+                className={`password-strength-bar ${passwordStrength.level}`}
+                style={{ width: `${passwordStrength.width}%` }}
+              />
+            </div>
+          )}
+
+          <button
+            className={`auth-btn ${loading ? 'loading' : ''}`}
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? '' : 'Create Account'}
+          </button>
+        </form>
 
         <p className="auth-bottom-text">
           Already registered? <Link to="/login">Login</Link>

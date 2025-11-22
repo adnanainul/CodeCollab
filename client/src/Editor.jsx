@@ -4,7 +4,10 @@ import EditorArea from "./EditorArea";
 import UserList from "./UserList";
 import "./Editor.css";
 
-const socket = io("http://localhost:4000");
+const socket = io("http://localhost:4000", {
+  transports: ["websocket"],
+});
+
 
 export default function Editor() {
   const [roomId, setRoomId] = useState("");
@@ -77,10 +80,10 @@ export default function Editor() {
       "join_room",
       { roomId, username, avatar },
       ({ content, version, users }) => {
-        const defaultCode=
+        const defaultCode =
           language === "python"
-            ?'print("Hello from CodeCollab!")'
-            :'console.log("Hello from CodeCollab!");';
+            ? 'print("Hello from CodeCollab!")'
+            : 'console.log("Hello from CodeCollab!");';
         setInitialContent(content || defaultCode);
         setInitialVersion(version);
         setUsers(users);
@@ -88,8 +91,8 @@ export default function Editor() {
         const colors = {};
         users.forEach(
           (u) =>
-            (colors[u.id] =
-              "#" + Math.floor(Math.random() * 16777215).toString(16))
+          (colors[u.id] =
+            "#" + Math.floor(Math.random() * 16777215).toString(16))
         );
         setUserColors(colors);
 
