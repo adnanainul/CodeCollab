@@ -5,6 +5,10 @@ Multiple users can code together, chat, share live cursors, and execute programs
 
 This project demonstrates WebSockets, React, Monaco Editor, JWT authentication, and real-time synchronization using Socket.IO.
 
+## 🚀 Live Demo
+- **Frontend:** [https://code-collab-kohl.vercel.app](https://code-collab-kohl.vercel.app)
+- **Backend:** [https://codecollab-api.onrender.com](https://codecollab-api.onrender.com)
+
 ## ✨ Features
 📝 Real-Time Collaboration
 
