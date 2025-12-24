@@ -1,17 +1,17 @@
-/* ============================================= */
-/*  CODECOLLAB - PROFESSIONAL DESIGN SYSTEM     */
-/* ============================================= */
 
-/* Google Fonts Import */
+
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-/* ============================================= */
-/*  CSS CUSTOM PROPERTIES (Design Tokens)       */
-/* ============================================= */
+
+
+
 
 :root {
-  /* ===== Color Palette ===== */
-  /* Primary Colors - Vibrant Purple/Blue Gradients */
+  
+  
   --color-primary-50: hsl(250, 100%, 97%);
   --color-primary-100: hsl(250, 95%, 92%);
   --color-primary-200: hsl(250, 90%, 85%);
@@ -23,7 +23,7 @@
   --color-primary-800: hsl(250, 60%, 25%);
   --color-primary-900: hsl(250, 55%, 15%);
 
-  /* Accent Colors - Emerald/Cyan */
+  
   --color-accent-50: hsl(160, 100%, 97%);
   --color-accent-100: hsl(160, 95%, 90%);
   --color-accent-200: hsl(160, 85%, 80%);
@@ -32,13 +32,13 @@
   --color-accent-500: hsl(160, 65%, 40%);
   --color-accent-600: hsl(160, 60%, 30%);
   
-  /* Semantic Colors */
+  
   --color-success: hsl(142, 71%, 45%);
   --color-warning: hsl(38, 92%, 50%);
   --color-error: hsl(0, 84%, 60%);
   --color-info: hsl(199, 89%, 48%);
 
-  /* Neutral Colors - Dark Theme */
+  
   --color-neutral-0: hsl(0, 0%, 100%);
   --color-neutral-50: hsl(240, 5%, 96%);
   --color-neutral-100: hsl(240, 5%, 92%);
@@ -52,40 +52,40 @@
   --color-neutral-900: hsl(240, 8%, 7%);
   --color-neutral-950: hsl(240, 10%, 4%);
 
-  /* Background Colors */
+  
   --bg-primary: var(--color-neutral-950);
   --bg-secondary: var(--color-neutral-900);
   --bg-tertiary: var(--color-neutral-800);
   --bg-elevated: var(--color-neutral-700);
   
-  /* Glass Effect */
+  
   --glass-bg: hsla(240, 8%, 15%, 0.7);
   --glass-border: hsla(240, 5%, 96%, 0.1);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
 
-  /* Text Colors */
+  
   --text-primary: var(--color-neutral-0);
   --text-secondary: var(--color-neutral-200);
   --text-tertiary: var(--color-neutral-400);
   --text-disabled: var(--color-neutral-600);
 
-  /* ===== Typography ===== */
+  
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
 
-  /* Font Sizes */
-  --text-xs: 0.75rem;      /* 12px */
-  --text-sm: 0.875rem;     /* 14px */
-  --text-base: 1rem;       /* 16px */
-  --text-lg: 1.125rem;     /* 18px */
-  --text-xl: 1.25rem;      /* 20px */
-  --text-2xl: 1.5rem;      /* 24px */
-  --text-3xl: 1.875rem;    /* 30px */
-  --text-4xl: 2.25rem;     /* 36px */
-  --text-5xl: 3rem;        /* 48px */
-  --text-6xl: 3.75rem;     /* 60px */
+  
+  --text-xs: 0.75rem;      
+  --text-sm: 0.875rem;     
+  --text-base: 1rem;       
+  --text-lg: 1.125rem;     
+  --text-xl: 1.25rem;      
+  --text-2xl: 1.5rem;      
+  --text-3xl: 1.875rem;    
+  --text-4xl: 2.25rem;     
+  --text-5xl: 3rem;        
+  --text-6xl: 3.75rem;     
 
-  /* Font Weights */
+  
   --font-light: 300;
   --font-normal: 400;
   --font-medium: 500;
@@ -93,7 +93,7 @@
   --font-bold: 700;
   --font-extrabold: 800;
 
-  /* Line Heights */
+  
   --leading-none: 1;
   --leading-tight: 1.25;
   --leading-snug: 1.375;
@@ -101,28 +101,28 @@
   --leading-relaxed: 1.625;
   --leading-loose: 2;
 
-  /* ===== Spacing Scale ===== */
-  --space-1: 0.25rem;   /* 4px */
-  --space-2: 0.5rem;    /* 8px */
-  --space-3: 0.75rem;   /* 12px */
-  --space-4: 1rem;      /* 16px */
-  --space-5: 1.25rem;   /* 20px */
-  --space-6: 1.5rem;    /* 24px */
-  --space-8: 2rem;      /* 32px */
-  --space-10: 2.5rem;   /* 40px */
-  --space-12: 3rem;     /* 48px */
-  --space-16: 4rem;     /* 64px */
-  --space-20: 5rem;     /* 80px */
+  
+  --space-1: 0.25rem;   
+  --space-2: 0.5rem;    
+  --space-3: 0.75rem;   
+  --space-4: 1rem;      
+  --space-5: 1.25rem;   
+  --space-6: 1.5rem;    
+  --space-8: 2rem;      
+  --space-10: 2.5rem;   
+  --space-12: 3rem;     
+  --space-16: 4rem;     
+  --space-20: 5rem;     
 
-  /* ===== Border Radius ===== */
-  --radius-sm: 0.375rem;   /* 6px */
-  --radius-md: 0.5rem;     /* 8px */
-  --radius-lg: 0.75rem;    /* 12px */
-  --radius-xl: 1rem;       /* 16px */
-  --radius-2xl: 1.5rem;    /* 24px */
+  
+  --radius-sm: 0.375rem;   
+  --radius-md: 0.5rem;     
+  --radius-lg: 0.75rem;    
+  --radius-xl: 1rem;       
+  --radius-2xl: 1.5rem;    
   --radius-full: 9999px;
 
-  /* ===== Shadows ===== */
+  
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -131,13 +131,13 @@
   --shadow-glow: 0 0 20px rgba(124, 58, 237, 0.4);
   --shadow-accent: 0 0 20px rgba(16, 185, 129, 0.3);
 
-  /* ===== Transitions ===== */
+  
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-bounce: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-  /* ===== Z-Index Scale ===== */
+  
   --z-base: 1;
   --z-dropdown: 1000;
   --z-sticky: 1100;
@@ -147,9 +147,9 @@
   --z-tooltip: 1500;
 }
 
-/* ============================================= */
-/*  GLOBAL RESET & BASE STYLES                  */
-/* ============================================= */
+
+
+
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -178,9 +178,9 @@ html, body, #root {
   width: 100%;
 }
 
-/* ============================================= */
-/*  TYPOGRAPHY                                  */
-/* ============================================= */
+
+
+
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: var(--font-bold);
@@ -215,9 +215,9 @@ code, pre {
   font-size: var(--text-sm);
 }
 
-/* ============================================= */
-/*  SCROLLBAR STYLING                           */
-/* ============================================= */
+
+
+
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -244,11 +244,11 @@ code, pre {
   background: var(--bg-secondary);
 }
 
-/* ============================================= */
-/*  UTILITY CLASSES                             */
-/* ============================================= */
 
-/* Glass Effect */
+
+
+
+
 .glass {
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
@@ -257,7 +257,7 @@ code, pre {
   box-shadow: var(--glass-shadow);
 }
 
-/* Gradient Text */
+
 .gradient-text {
   background: linear-gradient(135deg, var(--color-primary-400), var(--color-accent-400));
   -webkit-background-clip: text;
@@ -265,7 +265,7 @@ code, pre {
   -webkit-text-fill-color: transparent;
 }
 
-/* Smooth Transitions */
+
 .transition-all {
   transition: all var(--transition-base);
 }
@@ -278,7 +278,7 @@ code, pre {
   transition: all var(--transition-slow);
 }
 
-/* Hover Scale */
+
 .hover-scale:hover {
   transform: scale(1.05);
 }
@@ -287,7 +287,7 @@ code, pre {
   transform: scale(1.02);
 }
 
-/* Animations */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -381,9 +381,9 @@ code, pre {
   animation: float 3s ease-in-out infinite;
 }
 
-/* ============================================= */
-/*  FOCUS STYLES                                */
-/* ============================================= */
+
+
+
 
 :focus {
   outline: none;
@@ -395,9 +395,9 @@ code, pre {
   border-radius: var(--radius-sm);
 }
 
-/* ============================================= */
-/*  SELECTION STYLES                            */
-/* ============================================= */
+
+
+
 
 ::selection {
   background: var(--color-primary-500);

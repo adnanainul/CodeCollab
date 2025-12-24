@@ -1,6 +1,6 @@
-/* ============================================= */
-/*  LANDING PAGE - PROFESSIONAL DESIGN          */
-/* ============================================= */
+
+
+
 
 .landing-container {
   min-height: 100vh;
@@ -16,7 +16,7 @@
   overflow: hidden;
 }
 
-/* Animated background effects */
+
 .landing-container::before {
   content: '';
   position: absolute;
@@ -41,7 +41,7 @@
   animation: float 12s ease-in-out infinite reverse;
 }
 
-/* Decorative floating elements */
+
 .landing-container>* {
   position: relative;
   z-index: var(--z-base);
@@ -90,7 +90,7 @@
   animation: fadeIn 1s ease-out 0.2s backwards;
 }
 
-/* Buttons Container */
+
 .landing-buttons {
   display: flex;
   gap: var(--space-4);
@@ -99,7 +99,7 @@
   animation: fadeIn 1.2s ease-out 0.4s backwards;
 }
 
-/* Base button styling with glassmorphism */
+
 .landing-btn {
   padding: var(--space-4) var(--space-8);
   border-radius: var(--radius-xl);
@@ -130,7 +130,7 @@
   height: 300px;
 }
 
-/* Login Button - Secondary Style */
+
 .login-btn {
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
@@ -147,7 +147,7 @@
   box-shadow: var(--shadow-xl), 0 0 20px rgba(124, 58, 237, 0.2);
 }
 
-/* Register Button - Primary Style */
+
 .register-btn {
   background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-500));
   color: var(--text-primary);
@@ -164,7 +164,7 @@
   transform: translateY(-1px);
 }
 
-/* Start Coding Button - Accent Style */
+
 .start-btn {
   background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-400));
   color: var(--color-neutral-900);
@@ -182,7 +182,7 @@
   transform: translateY(-1px);
 }
 
-/* Features Section (Optional) */
+
 .landing-features {
   margin-top: var(--space-16);
   display: grid;
@@ -227,7 +227,7 @@
   line-height: var(--leading-relaxed);
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
   .landing-container {
     padding: var(--space-6) var(--space-4);

@@ -1,8 +1,8 @@
-/* ============================================= */
-/*  AUTHENTICATION PAGES - PROFESSIONAL DESIGN  */
-/* ============================================= */
 
-/* Fullscreen Center Layout */
+
+
+
+
 .auth-container-dark {
   min-height: 100vh;
   width: 100vw;
@@ -15,7 +15,7 @@
   overflow: hidden;
 }
 
-/* Animated background effects */
+
 .auth-container-dark::before {
   content: '';
   position: absolute;
@@ -40,7 +40,7 @@
   animation: float 10s ease-in-out infinite reverse;
 }
 
-/* Form Box with Glassmorphism */
+
 .auth-box {
   position: relative;
   z-index: var(--z-base);
@@ -56,7 +56,7 @@
   animation: fadeIn 0.6s ease-out;
 }
 
-/* Title with Gradient */
+
 .auth-box h2 {
   margin-bottom: var(--space-8);
   font-size: var(--text-4xl);
@@ -69,7 +69,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Input Fields */
+
 .auth-input {
   width: 100%;
   padding: var(--space-4);
@@ -100,7 +100,7 @@
   border-color: var(--color-neutral-600);
 }
 
-/* Input animation on focus */
+
 @keyframes inputFocus {
   0% {
     transform: scale(1);
@@ -119,7 +119,7 @@
   animation: inputFocus 0.3s ease-out;
 }
 
-/* Button */
+
 .auth-btn {
   width: 100%;
   padding: var(--space-4) var(--space-6);
@@ -165,7 +165,7 @@
   box-shadow: 0 3px 12px rgba(124, 58, 237, 0.3);
 }
 
-/* Loading state for button */
+
 .auth-btn.loading {
   pointer-events: none;
   opacity: 0.7;
@@ -191,7 +191,7 @@
   }
 }
 
-/* Bottom Text */
+
 .auth-bottom-text {
   margin-top: var(--space-6);
   font-size: var(--text-sm);
@@ -227,7 +227,7 @@
   width: 100%;
 }
 
-/* Password strength indicator (for Register page) */
+
 .password-strength {
   margin-top: calc(var(--space-2) * -1);
   margin-bottom: var(--space-4);
@@ -259,7 +259,7 @@
   background: var(--color-success);
 }
 
-/* Password visibility toggle */
+
 .password-wrapper {
   position: relative;
   width: 100%;
@@ -283,7 +283,7 @@
   color: var(--text-secondary);
 }
 
-/* Error message styling */
+
 .auth-error {
   background: rgba(239, 68, 68, 0.1);
   border: 1px solid var(--color-error);
@@ -296,7 +296,7 @@
   animation: slideInRight 0.3s ease-out;
 }
 
-/* Success message styling */
+
 .auth-success {
   background: rgba(16, 185, 129, 0.1);
   border: 1px solid var(--color-success);
@@ -309,7 +309,7 @@
   animation: slideInRight 0.3s ease-out;
 }
 
-/* Checkbox styling (for terms acceptance) */
+
 .auth-checkbox-wrapper {
   display: flex;
   align-items: center;
@@ -357,7 +357,7 @@
   user-select: none;
 }
 
-/* Responsive Design */
+
 @media (max-width: 480px) {
   .auth-box {
     padding: var(--space-6);

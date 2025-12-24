@@ -31,9 +31,7 @@ export default function Editor() {
 
   const messagesRef = useRef(null);
 
-  /* -----------------------------------------
-      🔥 Load logged-in user from localStorage
-  ------------------------------------------ */
+  
   useEffect(() => {
     const usr = localStorage.getItem("user");
     if (!usr) {
@@ -44,13 +42,11 @@ export default function Editor() {
     const parsed = JSON.parse(usr);
     setUsername(parsed.username);
 
-    // Create avatar using Dicebear
+    
     setAvatar(`https://api.dicebear.com/7.x/thumbs/svg?seed=${parsed.username}`);
   }, []);
 
-  /* -----------------------------------------
-      🔥 SOCKET LISTENERS
-  ------------------------------------------ */
+  
   useEffect(() => {
     socket.on("users_update", setUsers);
 
@@ -70,9 +66,7 @@ export default function Editor() {
     };
   }, []);
 
-  /* -----------------------------------------
-      🔥 JOIN ROOM
-  ------------------------------------------ */
+  
   const joinRoom = () => {
     if (!username || !roomId) return alert("Enter room ID");
 
@@ -101,9 +95,7 @@ export default function Editor() {
     );
   };
 
-  /* -----------------------------------------
-      🔥 RUN CODE
-  ------------------------------------------ */
+  
   const runCode = () => {
     socket.once("run_result", ({ output }) => setOutput(output));
 
@@ -113,9 +105,7 @@ export default function Editor() {
     });
   };
 
-  /* -----------------------------------------
-      🔥 SEND CHAT
-  ------------------------------------------ */
+  
   const sendMessage = () => {
     if (!chatMsg.trim()) return;
 
@@ -128,18 +118,14 @@ export default function Editor() {
     setChatMsg("");
   };
 
-  /* -----------------------------------------
-      🔥 LOGOUT
-  ------------------------------------------ */
+  
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     window.location.href = "/login";
   };
 
-  /* -----------------------------------------
-      🔥 JOIN SCREEN UI
-  ------------------------------------------ */
+  
   if (!joined) {
     return (
       <div className="join-container">
@@ -157,7 +143,7 @@ export default function Editor() {
             Join
           </button>
 
-          {/* LOGOUT button visible even here */}
+          {}
           <button className="logout-btn" onClick={logout}>
             Logout
           </button>
@@ -166,12 +152,10 @@ export default function Editor() {
     );
   }
 
-  /* -----------------------------------------
-      🔥 MAIN EDITOR UI
-  ------------------------------------------ */
+  
   return (
     <div className={`main-layout ${darkMode ? "dark" : "light"}`}>
-      {/* LEFT SIDEBAR */}
+      {}
       <div className="sidebar">
         <h3>Active Users</h3>
         <UserList users={users} userColors={userColors} />
@@ -199,7 +183,7 @@ export default function Editor() {
         </div>
       </div>
 
-      {/* EDITOR + TOP BAR */}
+      {}
       <div className="editor-section">
         <div className="top-bar">
           <img src={avatar} className="top-avatar" alt="user" />

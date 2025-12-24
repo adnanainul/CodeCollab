@@ -21,13 +21,13 @@ app.use(cors({
 
 app.use("/auth", authRoutes);
 
-// -------------------- DATABASE --------------------
+
 mongoose
   .connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/realtime_code")
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));
 
-// code model (simple)
+
 const CodeSchema = new mongoose.Schema({
   roomId: String,
   content: String,
@@ -35,7 +35,7 @@ const CodeSchema = new mongoose.Schema({
 });
 const CodeModel = mongoose.model("Code", CodeSchema);
 
-// -------------------- SOCKET SERVER --------------------
+
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
@@ -48,12 +48,12 @@ const io = new Server(server, {
 });
 
 
-const rooms = {}; // { roomId: [ { id, username, avatar } ] }
+const rooms = {}; 
 
 io.on("connection", (socket) => {
   console.log("Connected:", socket.id);
 
-  // JOIN ROOM
+  
   socket.on("join_room", async ({ roomId, username, avatar }, callback) => {
     socket.join(roomId);
 
@@ -69,7 +69,7 @@ io.on("connection", (socket) => {
       });
     }
 
-    // callback returns content/version and current users
+    
     callback({
       content: doc.content,
       version: doc.version,
@@ -79,7 +79,7 @@ io.on("connection", (socket) => {
     io.to(roomId).emit("users_update", rooms[roomId]);
   });
 
-  // LIVE CODE SYNC
+  
   socket.on("code_change", async ({ content, version }) => {
     const roomId = [...socket.rooms][1];
     if (!roomId) return;
@@ -88,12 +88,12 @@ io.on("connection", (socket) => {
     await CodeModel.updateOne({ roomId }, { content, version });
   });
 
-  // CURSOR BROADCAST
+  
   socket.on("cursor_change", ({ roomId, socketId, cursor }) => {
     socket.to(roomId).emit("cursor_change", { socketId, cursor });
   });
 
-  // RUN CODE
+  
   socket.on("run_code", async ({ language, code }) => {
     const langMap = {
       python: { lang: "python", version: "3.10.0" },
@@ -121,7 +121,7 @@ io.on("connection", (socket) => {
     }
   });
 
-  // CHAT
+  
   socket.on("chat_message", (msg) => {
     const roomId = [...socket.rooms][1];
     if (!roomId) return;
@@ -138,6 +138,6 @@ io.on("connection", (socket) => {
   });
 });
 
-// -------------------- START SERVER --------------------
+
 const PORT = process.env.PORT || 4000;
 server.listen(PORT, () => console.log("Server running on", PORT));

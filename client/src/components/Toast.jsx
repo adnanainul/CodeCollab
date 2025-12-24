@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Toast.css';
 
-// Toast notification system
+
 export default function Toast({ message, type = 'info', duration = 3000, onClose }) {
     const [isVisible, setIsVisible] = useState(true);
     const [isExiting, setIsExiting] = useState(false);
@@ -19,7 +19,7 @@ export default function Toast({ message, type = 'info', duration = 3000, onClose
         setTimeout(() => {
             setIsVisible(false);
             if (onClose) onClose();
-        }, 300); // Match animation duration
+        }, 300); 
     };
 
     if (!isVisible) return null;
@@ -40,7 +40,7 @@ export default function Toast({ message, type = 'info', duration = 3000, onClose
     );
 }
 
-// Toast Container Component
+
 export function ToastContainer({ toasts, removeToast }) {
     return (
         <div className="toast-container">

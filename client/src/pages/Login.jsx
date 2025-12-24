@@ -35,11 +35,11 @@ export default function Login() {
         return;
       }
 
-      // Store token and user
+      
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
-      // Navigate to editor
+      
       navigate("/editor");
     } catch (err) {
       setError(err.response?.data?.message || "Invalid email or password");

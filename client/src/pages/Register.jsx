@@ -57,7 +57,7 @@ export default function Register() {
         password: pass,
       });
 
-      // Navigate to login
+      
       navigate("/login");
     } catch (err) {
       console.error(err);

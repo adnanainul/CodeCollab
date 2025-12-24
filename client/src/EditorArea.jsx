@@ -17,9 +17,9 @@ export default function EditorArea({
   const [version, setVersion] = useState(initialVersion || 0);
 
   const editorRef = useRef(null);
-  const decorationsRef = useRef({}); // Track remote cursor highlights
+  const decorationsRef = useRef({}); 
 
-  /* ---------------------- Load initial content ---------------------- */
+  
   useEffect(() => {
     setValue(initialContent || "");
     setVersion(initialVersion || 0);
@@ -28,7 +28,7 @@ export default function EditorArea({
   }, [initialContent, initialVersion]);
 
 
-  /* ---------------------- Receive remote code updates ---------------------- */
+  
   useEffect(() => {
     if (!socket) return;
 
@@ -45,7 +45,7 @@ export default function EditorArea({
   }, [socket, version]);
 
 
-  /* ---------------------- Send updates (debounced) ---------------------- */
+  
   const emitChange = useCallback(
     debounce((content, newVersion) => {
       socket.emit("code_change", { content, version: newVersion });
@@ -66,7 +66,7 @@ export default function EditorArea({
   };
 
 
-  /* ---------------------- Cursor Sync: Send cursor ---------------------- */
+  
   const sendCursorPosition = useCallback(
     debounce((pos) => {
       socket.emit("cursor_change", {
@@ -91,7 +91,7 @@ export default function EditorArea({
   }, [sendCursorPosition]);
 
 
-  /* ---------------------- Cursor Sync: Receive cursor ---------------------- */
+  
   useEffect(() => {
     const onCursorUpdate = ({ socketId, cursor }) => {
       if (!editorRef.current || !cursor) return;
@@ -127,7 +127,7 @@ export default function EditorArea({
   }, [socket, userColors]);
 
 
-  /* ---------------------- Render Monaco Editor ---------------------- */
+  
   return (
     <div className="editor-wrapper">
       <Editor
